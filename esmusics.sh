@@ -10,7 +10,7 @@
 # See the LICENSE.md file at the top-level directory of this distribution and
 # at https://raw.githubusercontent.com/RetroPie/RetroPie-Setup/master/LICENSE.md
 #
-# es-musics v1.1 - 2023-03-01
+# es-musics v1.2 - 2023-11-22
 
 rp_module_id="es-musics"
 rp_module_desc="Music-Sets for Emulationstation"
@@ -33,9 +33,16 @@ function sources_es-musics() {
 
 function install_es-musics() {
 
-	local esmdir="$datadir"	
+    local esmdir="$datadir"	
     local esmsetup="$scriptdir/scriptmodules/supplementary"
-	
+
+    mkdir "$datadir/musics"
+    ln -s "$datadir/musics" "$datadir/music"
+    chown -cR pi:pi "$datadir/music"
+    chown -cR pi:pi "$datadir/musics"
+    chmod 755 "$datadir/music"
+    chmod 755 "$datadir/musics"
+ 
     cd "$md_inst"
 	
 #	cp -r "esmusics.sh" "$esmsetup/esmusics.sh"
